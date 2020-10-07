@@ -1,0 +1,47 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+<div class="m-2 p-3">
+    <h2 class="d-flex justify-content-center"> {{context.name}} </h2>
+</div>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group mb-2">
+                <label class="form-label" for="id_name">Name: </label>
+                <input class="form-control" type="text" value="{{context.name}}" name="name" maxlength="100" required
+                    id="id_name" />
+            </div>
+            <div class="form-group mb-2">
+                <label class="form-label" for="id_memo">Memo: </label>
+                <textarea class="form-control" name="memo" rows="10" cols="40" maxlength="200"
+                    id="id_memo">{{context.memo}}</textarea>
+            </div>
+            <div class="form-group mb-2">
+                <label class="form-label" for="id_important">Important: </label>
+                {% if context.important %}
+                <input class="form-check-input" type="checkbox" id="id_important" name="important" checked>
+                {% else %}
+                <input class="form-check-input" type="checkbox" id="id_important" name="important" aria-checked="false">
+                {% endif %}
+            </div>
+            <button class="btn btn-success mb-2 ml-5 d-inline" type="submit">Save</button>
+        </form>
+        <div class = "d-flex justify-content-center">
+        <div class="col-md-2 mr-5" style="margin-top: -2.89rem;">
+            <form method="POST" action="{% url 'completetodo' context.id %}">
+                {% csrf_token %}
+                <button class="btn btn-primary mb-2 mr-2 " type="submit">Complete</button>
+            </form>
+        </div>
+        <div class = "col-md-2 mr-5" style="margin-top: -2.89rem;">
+            <form method="POST" action="{% url 'deletetodo' context.id %}">
+                {% csrf_token %}
+                <button class="btn btn-danger mb-2 mr-2" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

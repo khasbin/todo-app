@@ -1,0 +1,13 @@
+.logout{
+    margin-left: 13rem;
+}
+.todo-items{
+    margin-left:5rem;
+    margin-right:6rem;
+    font-size: 18px;
+    font-family: 'IBM Plex Serif', serif;
+}
+.todo-items:hover{
+    color : #987284 !important;
+    font-size: 20px;
+}

@@ -1,0 +1,16 @@
+{% extends 'todo/base.html'%}
+{% block content%}
+    <div class="m-2 p-3">
+        <h1 class="text-center"> Current Todos </h1>
+    </div>
+    <ul class = "list-group">
+        {% for todo in todos %}
+        <div class = "container" >
+        <li class = " mb-1 text-center list-group-item" style="display: block; background-color:darkturquoise;"><a style = "text-decoration: none; color: black; font-size: 20px;" href="{% url 'todoview' todo.id %}">
+                {% if todo.important %}<b>{% endif %}{{todo.name}}
+                    {% if todo.important %}</b>{% endif %}{% if todo.memo %} -- {{todo.memo|truncatechars:'30'}}{% endif %}
+            </a></li>
+        </div>
+        {% endfor %}
+    </ul>
+{% endblock %}

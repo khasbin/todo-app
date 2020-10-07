@@ -1,0 +1,9 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+<div class = "mt-5 p-2">
+    <h3 class = 'd-flex justify-content-center'>Todo app</h3>
+    <h5 class = "d-flex justify-content-center">Lets start by creating new todos that can be used in your daily life.</h5>
+    <a class = "btn btn-warning col-2 m-4" style="margin-left: 35rem !important;" href = "{% url 'createtodo' %}">Let's Start</a>
+</div>
+{% endblock %}
+
