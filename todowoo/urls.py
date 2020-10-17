@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from todo import views
 
 urlpatterns = [
@@ -29,4 +29,8 @@ urlpatterns = [
     path('todo/<int:todo_pk>',views.todoview, name = 'todoview'),
     path('todo/<int:todo_pk>/complete/', views.completetodo, name = "completetodo"),
     path('todo/<int:todo_pk>/delete/', views.deletetodo, name = "deletetodo"),
+
+    #todo api
+    path('api/', include('todoapi.urls'))
+    
 ]

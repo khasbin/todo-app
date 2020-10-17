@@ -9,6 +9,7 @@ from .models import Todoapp
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+
 def home(request):
     return render(request, 'todo/home.html')
 
@@ -23,7 +24,7 @@ def signupuser(request):
                 login(request, user)
                 return redirect('currenttodo')
             except IntegrityError:
-                 return render(request, 'todo/signup.html', {'form':UserCreationForm(), 'error':"The username is already taken please choose another username"})
+                return render(request, 'todo/signup.html', {'form':UserCreationForm(), 'error':"The username is already taken please choose another username"})
 
         else:
             return render(request, 'todo/signup.html', {'form':UserCreationForm(), 'error':"The password didnt match"})
