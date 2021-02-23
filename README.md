@@ -1,1 +1,2 @@
-#  django powered todo app
+#  django powered todo app and its API
+
